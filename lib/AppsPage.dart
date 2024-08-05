@@ -1,4 +1,5 @@
 import 'package:first_app/DICEAPP/DiceApp.dart';
+import 'package:first_app/FinanceApp/finance_app.dart';
 import 'package:first_app/QuizApp/mainquiz.dart';
 import 'package:flutter/material.dart';
 
@@ -60,6 +61,17 @@ class AppsPage extends StatelessWidget {
                 },
                 child: const Text('Go to the Quiz'),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => const FinanceApp())));
+                  },
+                  child: const Text('FinanceApp'))
             ],
           ),
         ),

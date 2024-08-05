@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AnswersStyle extends StatelessWidget {
-  const AnswersStyle(
-      {super.key, required this.answersText, required this.onTap});
+  const AnswersStyle({
+    super.key,
+    required this.answersText,
+    required this.onTap,
+    required this.isCorrect,
+  });
   final String answersText;
   final void Function() onTap;
+  final bool isCorrect;
 
   @override
   Widget build(BuildContext context) {

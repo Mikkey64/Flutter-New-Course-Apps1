@@ -1,7 +1,9 @@
 import 'package:first_app/AppsPage.dart';
 import 'package:first_app/DICEAPP/DiceApp.dart';
 import 'package:first_app/DICEAPP/test.dart';
+import 'package:first_app/FinanceApp/finance_app.dart';
 import 'package:first_app/QuizApp/QuizApp.dart';
+import 'package:first_app/QuizApp/QuizEnd.dart';
 import 'package:first_app/QuizApp/mainquiz.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +29,10 @@ class MyApp extends StatelessWidget {
         '/Testpage': (context) => const Testpage(),
         '/MainQuiz': (context) => const MainQuiz(),
         '/QuizApp': (context) => const QuizApp(),
+        '/QuizEnd': (context) => const QuizEnd(
+              userAnswers: [],
+            ),
+        'FinanceApp': (context) => const FinanceApp(),
       },
     );
   }

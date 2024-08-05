@@ -1,5 +1,6 @@
 import 'package:first_app/QuizApp/QuizApp.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainQuiz extends StatelessWidget {
   const MainQuiz({super.key});
@@ -45,13 +46,12 @@ class MainQuiz extends StatelessWidget {
               ),
               Column(
                 children: [
-                  const Text(
-                    'Welcome to the knownledge quiz',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                    ),
-                  ),
+                  Text('Welcome to the knownledge quiz',
+                      style: GoogleFonts.ubuntu(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: const Color.fromARGB(168, 131, 104, 172),
+                      )),
                   const SizedBox(
                     height: 10,
                   ),

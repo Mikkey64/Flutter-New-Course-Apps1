@@ -1,3 +1,4 @@
+import 'package:first_app/QuizApp/QuizEnd.dart';
 import 'package:first_app/QuizApp/data/question_data.dart';
 import 'package:first_app/QuizApp/modules/AnswersStyle.dart';
 import 'package:flutter/material.dart';
@@ -12,16 +13,32 @@ class QuizApp extends StatefulWidget {
 
 class _QuizAppState extends State<QuizApp> {
   var currentQuestionIndex = 0;
+  List<Map<String, dynamic>> userAnswers = [];
 
-  void answersQuestion() {
+  void answersQuestion(String answer) {
+    final currentQuestion = questions[currentQuestionIndex];
+    final isCorrect = answer == currentQuestion.correctAnswer;
     setState(() {
+      userAnswers.add({'answer': answer, 'isCorrect': isCorrect});
       currentQuestionIndex++;
-      print("questions current index: $currentQuestionIndex");
     });
+
+    if (currentQuestionIndex >= questions.length) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => QuizEnd(userAnswers: userAnswers),
+        ),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    if (currentQuestionIndex >= questions.length) {
+      return Container();
+    }
+
     final currentQuestion = questions[currentQuestionIndex];
 
     return MaterialApp(
@@ -40,12 +57,11 @@ class _QuizAppState extends State<QuizApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Center(
-                child: Text(
-                  currentQuestion.text,
-                  style: GoogleFonts.lobster(
-                    color: Colors.white,
-                  ),
+              Text(
+                currentQuestion.text,
+                style: GoogleFonts.josefinSans(
+                  color: Colors.white,
+                  fontSize: 25,
                 ),
               ),
               const SizedBox(
@@ -55,7 +71,8 @@ class _QuizAppState extends State<QuizApp> {
                 (answers) {
                   return AnswersStyle(
                     answersText: answers,
-                    onTap: answersQuestion,
+                    onTap: () => answersQuestion(answers),
+                    isCorrect: answers == currentQuestion.correctAnswer,
                   );
                 },
               ),
